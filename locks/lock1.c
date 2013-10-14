@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 
     printf("main: begin\n");
 
+    for(in x = 0 ; x < 10 ; x++)
     for(i=0; i<2; i++){
         rc = pthread_create(&request[i], NULL, REQUEST, i); 
         assert(rc == 0);
@@ -72,7 +73,9 @@ int main(int argc, char *argv[])
         assert(rc == 0);
     }
 
+    for(in x = 0 ; x < 10 ; x++)
     for(i=0; i<2; i++){
+        sleep(20);
         rc = pthread_join(request[i], NULL);
         assert(rc == 0);
         rc = pthread_join(enter[i], NULL);
