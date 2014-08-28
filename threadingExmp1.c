@@ -4,7 +4,7 @@
 
 void *mythread(void *arg) {
 
-    int x = (int)arg;
+    int x = (int *)arg;
 
     printf("%d\n", x);
     return NULL;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     printf("main: begin\n");
 
     for(i=0; i<10; i++){
-        rc = pthread_create(&p[i], NULL, mythread, i); 
+        rc = pthread_create(&p[i], NULL, mythread,(void *) i); 
         assert(rc == 0);
     }
 
